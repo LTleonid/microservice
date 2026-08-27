@@ -5,9 +5,13 @@ import (
 )
 
 func main() {
-	var height = 1.8
-	var weight float64 = 100
-	var imt = weight / math.Pow(height, 2)
+	// height := 1.8
+	// var weight float64
+	// weight = 100
+	// height, weight := 1.8 , 100 // Динам.-стат. распоковка
+	const imtpower float64 = 2
+	var height, weight float64 = 1.8, 100 // множественная распоковка
+	var imt = weight / math.Pow(height, imtpower)
 	fmt.Print(imt)
 }
 
