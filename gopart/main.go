@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-const SharpURL = "http://127.0.0.1:8081/process"
+const SharpURL = "http://127.0.0.1:8081/api/Process"
 
 // const SharpURL = "https://httpbin.org/post"
 
@@ -46,11 +46,18 @@ func gateway(w http.ResponseWriter, r *http.Request) {
 		}
 		req.Header.Set("Content-Type", "application/json")
 		res, err := http.DefaultClient.Do(req)
-		res.Body.Close()
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
+		fmt.Println(res.StatusCode)
+		sres, err := io.ReadAll(res.Body)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		fmt.Fprintln(w, string(sres))
+		res.Body.Close()
 
 	}
 }
