@@ -1,0 +1,16 @@
+syntax = "proto3";
+message Request {
+  string text = 1;
+  int64 lenght = 2;
+  repeated string provide = 3;
+}
+
+message Response {
+  string text = 1;
+  int64 lenght = 2;
+  repeated string provide = 3;
+  int64 count_words  = 4;
+}
+service CSharpToPython {
+  rpc GetCount(Request) returns (Response);
+}
