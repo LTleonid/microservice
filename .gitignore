@@ -680,3 +680,5 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+#build files
+gopart/gopart
