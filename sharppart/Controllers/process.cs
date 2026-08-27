@@ -1,3 +1,4 @@
+using Google.Protobuf.Collections;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.ObjectPool;
@@ -9,16 +10,24 @@ namespace MyApp.Namespace
     [ApiController]
     public class Process : ControllerBase
     {
+        private readonly CSharpToPython.CSharpToPythonClient _python;
 
-        // Вот и интерфейсы бы пригодились) но лень хотя
-        // public record class DataInput(string text, List<string> provide);
-        // public record class DataOutput(string text, int lenght , List<string> provide);
-        // POST api/<process>
+        public Process(CSharpToPython.CSharpToPythonClient python)
+        {
+            _python = python;
+        }
+
         [HttpPost]
-        public DataOutput Post(DataOutput data) 
+        public async Task<global::Response> Post(DataOutput data) 
         {
             data.provide.Add("C#");
-            return data; 
+            //Сюда ща полетит grpc
+            global::Request req = new();
+            req.Text = data.text;
+            req.Lenght = data.Length;
+            req.Provide.AddRange(data.provide);
+            var res = await _python.GetCountAsync(req);
+            return res; 
 
         }
 

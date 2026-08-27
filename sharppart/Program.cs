@@ -1,6 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
+builder.Services.AddGrpcClient<CSharpToPython.CSharpToPythonClient>(options =>
+{
+    options.Address= new Uri("http://localhost:50051");
+
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -11,14 +16,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// app.UseHttpsRedirection(); // для локала не нужно
-// app.UseStaticFiles();
-
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// app.MapStaticAssets();
 app.MapControllers();
 
 app.Run();
