@@ -8,8 +8,9 @@ import (
 	"net/http"
 )
 
-// const SharpURL = "http://127.0.0.1:8081/process"
-const SharpURL = "https://httpbin.org/post"
+const SharpURL = "http://127.0.0.1:8081/process"
+
+// const SharpURL = "https://httpbin.org/post"
 
 type DataText struct {
 	Text    *string  `json:"text"`
