@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../gopart"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
