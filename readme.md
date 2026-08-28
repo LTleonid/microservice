@@ -1,9 +1,63 @@
-# microservice project for study
-> | GO | Python | C#/.NET | CPP |
+# Microservice
 
-127.0.0.1:8080 ->(raw-Json) Go <-> (Json/HTTP) C# <-> (grpc/HTTP) -> Pythpn <-> RabbitMQ <-> C++ <br>
-> только заметил, тут с++ кода больше чем остального)) Ужас, я вроде на C# ушёл, а плюсы всё равно нужно больше..
-# Work in docker compose
+> Учебный проект с несколькими микросервисами на разных языках.
+
+**Go · Python · C#/.NET · C++ · gRPC · RabbitMQ · Docker Compose**
+
+```text
+127.0.0.1:8080
+      │
+      ▼
+     Go
+      │ HTTP / JSON
+      ▼
+  C# / .NET
+      │ gRPC
+      ▼
+   Python
+      │ RabbitMQ
+      ▼
+     C++
+      │ RabbitMQ
+      └──────────► Python → C# → Go
+```
+
+## Запуск
+Всё работает через Docker Compose:
+
+```bash
+git clone https://github.com/LTleonid/microservice.git
+cd microservice
+
+docker compose up --build
+```
+
+После запуска:
+```text
+http://127.0.0.1:8080
+```
+
+Остановить:
+```bash
+docker compose down
+```
+
+## Стек
+* **Go** — gateway
+* **C# / .NET** — основной сервис
+* **Python** — gRPC + RabbitMQ bridge
+* **C++** — worker
+* **RabbitMQ** — обмен сообщениями
+* **Docker Compose** — запуск всего проекта
+
+## Зачем?
+Просто учебный проект, чтобы потрогать разные способы общения между сервисами:
+
+`HTTP → gRPC → RabbitMQ → C++`
+
+> Только сейчас заметил, что C++-кода тут больше, чем всего остального.
+> Я вроде на C# ушёл же...
+
 Просьбы от ИИ:
 # TODO
 
