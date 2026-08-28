@@ -2,7 +2,7 @@
 > | GO | Python | C#/.NET | CPP |
 
 127.0.0.1:8080 ->(raw-Json) Go <-> (Json/HTTP) C# <-> (grpc/HTTP) -> Pythpn <-> RabbitMQ <-> C++ <br>
-
+> только заметил, тут с++ кода больше чем остального)) Ужас, я вроде на C# ушёл, а плюсы всё равно нужно больше..
 # Work in docker compose
 Просьбы от ИИ:
 # TODO
