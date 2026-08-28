@@ -2,7 +2,7 @@
 
 > Учебный проект с несколькими микросервисами на разных языках.
 
-**Go · Python · C#/.NET · C++ · gRPC · RabbitMQ · Docker Compose**
+**Go (впервые трогаю ручками) | Python | C#/.NET | C++ | gRPC | RabbitMQ (Неведомая мне херь) | Docker Compose**
 
 ```text
 127.0.0.1:8080
