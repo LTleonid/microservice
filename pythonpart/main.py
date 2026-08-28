@@ -1,2 +1,3 @@
 from pythonpart import serve
-serve()
+import asyncio
+asyncio.run(serve())

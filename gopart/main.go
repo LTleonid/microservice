@@ -10,8 +10,6 @@ import (
 
 const SharpURL = "http://sharp:8080/api/Process"
 
-// const SharpURL = "https://httpbin.org/post"
-
 type DataText struct {
 	Text    *string  `json:"text"`
 	Provide []string `json:"provide"` //фига забавно массивы

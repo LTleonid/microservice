@@ -7,5 +7,31 @@ services:
     build:
       context: ./
       dockerfile: ./sharppart/Dockerfile
+    depends_on:
+      - python
   python:
-    build: ./pythonpart
+    build:
+      context: .
+      dockerfile: ./pythonpart/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+  cpp:
+    build:
+      context: .
+      dockerfile: ./cpppart/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+  rabbitmq:
+    image: rabbitmq:4-management
+
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
