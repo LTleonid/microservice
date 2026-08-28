@@ -6,7 +6,6 @@ import process_pb2_grpc
 class ProcessService(process_pb2_grpc.CSharpToPythonServicer):
     def GetCount(self, request, context):
         text: str = request.text
-
         response = process_pb2.Response()
         response.text = text
         response.lenght = request.lenght
