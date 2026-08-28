@@ -12,6 +12,7 @@ class ProcessService(process_pb2_grpc.CSharpToPythonServicer):
         response.count_words = text.count(" ") +1
         response.provide.extend(request.provide)
         response.provide.append("Python")
+        print(response)
         return response
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

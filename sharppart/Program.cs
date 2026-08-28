@@ -3,7 +3,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 builder.Services.AddGrpcClient<CSharpToPython.CSharpToPythonClient>(options =>
 {
-    options.Address= new Uri("http://localhost:50051");
+    options.Address= new Uri("http://python:50051");
 
 });
 var app = builder.Build();

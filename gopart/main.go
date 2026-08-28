@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-const SharpURL = "http://127.0.0.1:8081/api/Process"
+const SharpURL = "http://sharp:8080/api/Process"
 
 // const SharpURL = "https://httpbin.org/post"
 

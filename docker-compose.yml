@@ -1,0 +1,11 @@
+services:
+  go:
+    build: ./gopart
+    ports:
+      - 8080:8080
+  sharp:
+    build:
+      context: ./
+      dockerfile: ./sharppart/Dockerfile
+  python:
+    build: ./pythonpart
