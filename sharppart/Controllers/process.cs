@@ -24,7 +24,7 @@ namespace MyApp.Namespace
             //Сюда ща полетит grpc
             global::Request req = new();
             req.Text = data.text;
-            req.Lenght = data.Length;
+            req.Length = data.Length;
             req.Provide.AddRange(data.provide);
             var res = await _python.GetCountAsync(req);
             return res; 

@@ -1,18 +1,31 @@
+
+x-resource-limits: &my-limits
+  deploy:
+    resources:
+      limits:
+        cpus: '8.0'
+        memory: 1G
+      reservations:
+        memory: 50M
+
 services:
   go:
     build: ./gopart
     ports:
       - 8080:8080
+    <<: *my-limits
   sharp:
     build:
       context: ./
       dockerfile: ./sharppart/Dockerfile
+    <<: *my-limits
     depends_on:
       - python
   python:
     build:
       context: .
       dockerfile: ./pythonpart/Dockerfile
+    <<: *my-limits
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -20,12 +33,13 @@ services:
     build:
       context: .
       dockerfile: ./cpppart/Dockerfile
+    <<: *my-limits
     depends_on:
       rabbitmq:
         condition: service_healthy
   rabbitmq:
     image: rabbitmq:4-management
-
+    <<: *my-limits
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
@@ -35,3 +49,4 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+      

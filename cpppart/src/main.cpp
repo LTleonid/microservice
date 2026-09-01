@@ -9,12 +9,9 @@
 
 constexpr const char* RABBITMQ_HOST = "rabbitmq";
 constexpr int RABBITMQ_PORT = 5672;
-
 constexpr const char* RABBITMQ_USER = "guest";
 constexpr const char* RABBITMQ_PASSWORD = "guest";
-
 constexpr const char* RABBITMQ_VHOST = "/";
-
 constexpr const char* REQUEST_QUEUE = "CPP_Request";
 constexpr const char* RESPONSE_QUEUE = "CPP_Response";
 

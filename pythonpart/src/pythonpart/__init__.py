@@ -1,11 +1,8 @@
 import asyncio
 import uuid
-
 import grpc
-
 import process_pb2
 import process_pb2_grpc
-
 from faststream import FastStream
 from faststream.rabbit import RabbitBroker
 
@@ -31,7 +28,7 @@ class ProcessService(process_pb2_grpc.CSharpToPythonServicer):
         request.request_id = str(uuid.uuid4())
         request.provide.append("Python")
         request.count_words = len(request.text.split())
-        request.lenght = len(request.text)
+        request.length = len(request.text)
 
         loop = asyncio.get_running_loop()
         future = loop.create_future()
@@ -39,9 +36,7 @@ class ProcessService(process_pb2_grpc.CSharpToPythonServicer):
 
         try:
             await broker.publish(request.SerializeToString(), queue="CPP_Request") #Отпрвляем в рмк
-            print(f"Python->CPP: {request.request_id}")
             response = await asyncio.wait_for(future,timeout=30) # ждём ответ от плюсов
-            print(f"CPP->Python:\n{response}")
 
             return response
 
@@ -58,7 +53,6 @@ async def grpc_server():
     process_pb2_grpc.add_CSharpToPythonServicer_to_server(ProcessService(),server)
     server.add_insecure_port("[::]:50051")
     await server.start()
-    print("gRPC server started on :50051")
     await server.wait_for_termination()
 
 

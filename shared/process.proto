@@ -3,7 +3,7 @@ syntax = "proto3";
 message Request {
     string request_id = 1;
     string text = 2;
-    int64 lenght = 3;
+    int64 length = 3;
     repeated string provide = 4;
     int64 count_words = 5;
 }
@@ -11,7 +11,7 @@ message Request {
 message Response {
     string request_id = 1;
     string text = 2;
-    int64 lenght = 3;
+    int64 length = 3;
     repeated string provide = 4;
     int64 count_words = 5;
     bool is_palindrome = 6;
